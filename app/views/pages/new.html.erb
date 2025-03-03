@@ -1,0 +1,15 @@
+<h1>Le mot le plus long</h1>
+
+<p>Utilisez les lettres suivantes pour former un mot :</p>
+<ul>
+  <% @letters.each do |letter| %>
+    <li><%= letter %></li>
+  <% end %>
+</ul>
+
+<%= form_with url: "/score", method: :post do |form| %>
+  <%= form.hidden_field :letters, value: @letters.join(" ") %>
+  <%= form.label :word, "Votre mot :" %>
+  <%= form.text_field :word, placeholder: "Tapez votre mot ici" %>
+  <%= form.submit "Valider", class: "btn btn-primary" %>
+<% end %>
